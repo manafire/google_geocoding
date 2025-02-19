@@ -7,7 +7,7 @@ import 'package:google_place/google_place.dart' as googlePlace;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await DotEnv().load('.env');
+  await DotEnv().load();
   runApp(MyApp());
 }
 
@@ -247,8 +247,7 @@ class _HomePageState extends State<HomePage> {
                                 color: Colors.white,
                               ),
                             ),
-                            title:
-                                Text(geocodingResults[index].formattedAddress),
+                            title: Text(geocodingResults[index].formattedAddress),
                             onTap: () {
                               debugPrint(geocodingResults[index].placeId);
                               Navigator.push(
@@ -273,17 +272,14 @@ class _HomePageState extends State<HomePage> {
                                 color: Colors.white,
                               ),
                             ),
-                            title: Text(reverseGeocodingResults[index]
-                                .formattedAddress),
+                            title: Text(reverseGeocodingResults[index].formattedAddress),
                             onTap: () {
-                              debugPrint(
-                                  reverseGeocodingResults[index].placeId);
+                              debugPrint(reverseGeocodingResults[index].placeId);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => DetailsPage(
-                                    placeId:
-                                        reverseGeocodingResults[index].placeId,
+                                    placeId: reverseGeocodingResults[index].placeId,
                                   ),
                                 ),
                               );
@@ -461,8 +457,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             child: Icon(Icons.location_on),
                           ),
                           title: Text(
-                            detailsResult != null &&
-                                    detailsResult.formattedAddress != null
+                            detailsResult != null && detailsResult.formattedAddress != null
                                 ? 'Address: ${detailsResult.formattedAddress}'
                                 : "Address: null",
                           ),
@@ -490,8 +485,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             child: Icon(Icons.timelapse),
                           ),
                           title: Text(
-                            detailsResult != null &&
-                                    detailsResult.utcOffset != null
+                            detailsResult != null && detailsResult.utcOffset != null
                                 ? 'UTC offset: ${detailsResult.utcOffset.toString()} min'
                                 : "UTC offset: null",
                           ),
@@ -504,8 +498,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             child: Icon(Icons.rate_review),
                           ),
                           title: Text(
-                            detailsResult != null &&
-                                    detailsResult.rating != null
+                            detailsResult != null && detailsResult.rating != null
                                 ? 'Rating: ${detailsResult.rating.toString()}'
                                 : "Rating: null",
                           ),
@@ -518,8 +511,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             child: Icon(Icons.attach_money),
                           ),
                           title: Text(
-                            detailsResult != null &&
-                                    detailsResult.priceLevel != null
+                            detailsResult != null && detailsResult.priceLevel != null
                                 ? 'Price level: ${detailsResult.priceLevel.toString()}'
                                 : "Price level: null",
                           ),
